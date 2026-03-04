@@ -36,3 +36,23 @@ async def insertar(cli: Cliente, conn = Depends(get_conexion)):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
+@router.put("/{id_cliente}")
+async def actualizar(id_cliente: int, cli: Cliente, conn = Depends(get_conexion)):
+    consulta = "UPDATE clientes SET nombre_empresa=%s, nit=%s, direccion=%s, telefono=%s WHERE id_cliente=%s"
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute(consulta, (cli.nombre_empresa, cli.nit, cli.direccion, cli.telefono, id_cliente))
+            await conn.commit()
+            return {"mensaje": "Actualizado"}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@router.delete("/{id_cliente}")
+async def eliminar(id_cliente: int, conn = Depends(get_conexion)):
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("DELETE FROM clientes WHERE id_cliente = %s", (id_cliente,))
+            await conn.commit()
+            return {"mensaje": "Eliminado"}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
