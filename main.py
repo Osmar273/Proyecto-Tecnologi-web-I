@@ -8,7 +8,7 @@ from routes import equipos
 from routes import materiales
 from routes import detalle_materiales
 from routes import reportes_tecnicos
-
+#holaaa
 from config.conexionBD import app
 
 app.include_router(clientes.router, prefix="/clientes", tags=["CLIENTES"])
