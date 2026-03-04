@@ -10,7 +10,6 @@ from routes import detalle_materiales
 from routes import reportes_tecnicos
 from config.conexionBD import app
 
-print("Hola GitHub, esta es una prueba de Osmar")
 app.include_router(clientes.router, prefix="/clientes", tags=["CLIENTES"])
 app.include_router(proveedores.router, prefix="/proveedores",tags=["PROVEEDORES"])
 app.include_router(usuarios.router, prefix="/usuarios",tags=["USUARIOS"])
