@@ -19,6 +19,7 @@ class Proyecto(BaseModel):
 
 @router.get("/")
 async def listar_buscar(id_proyecto: Optional[int] = None, conn = Depends(get_conexion)):
+    print ("listando proyectos")
     try:
         async with conn.cursor() as cursor:
             if id_proyecto:
