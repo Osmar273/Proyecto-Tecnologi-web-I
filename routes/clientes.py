@@ -56,3 +56,4 @@ async def eliminar(id_cliente: int, conn = Depends(get_conexion)):
             return {"mensaje": "Eliminado"}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+        print ("hola")
