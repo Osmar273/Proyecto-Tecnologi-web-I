@@ -39,6 +39,7 @@ async def insertar(mat: Material, conn = Depends(get_conexion)):
 
 @router.put("/{id_material}")
 async def actualizar(id_material: int, mat: Material, conn = Depends(get_conexion)):
+    print("Actualizando materiales")
     consulta = "UPDATE materiales SET nombre_componente=%s, costo_unitario=%s, id_proveedor=%s WHERE id_material=%s"
     try:
         async with conn.cursor() as cursor:
