@@ -1,3 +1,10 @@
+import asyncio
+import sys
+
+# Solo agregamos este bloque para la compatibilidad de la base de datos en Windows
+if sys.platform == 'win32':
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
 from fastapi import FastAPI
 from routes import clientes
 from routes import proveedores
