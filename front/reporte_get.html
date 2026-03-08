@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes Técnicos - SEI</title>
+    <style>
+        :root {
+            --azul-oscuro: #0e305a;
+            --azul-claro: #0077b6;
+            --naranja: #f26522;
+            --fondo: #f4f7f9;
+            --texto: #333333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        h1 {
+            color: var(--azul-oscuro);
+            border-bottom: 3px solid var(--naranja);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        #listado {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        #data {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+        #data li {
+            background-color: white;
+            border-top: 6px solid var(--azul-claro);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h3 {
+            margin-top: 0;
+            color: var(--azul-oscuro);
+        }
+        p {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Reportes Técnicos</h1>
+    <div id="listado">
+        <ul id="data">
+            <li>Cargando...</li>
+        </ul>
+    </div>
+    <script src="reporte_get.js"></script>
+</body>
+</html>
