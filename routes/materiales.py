@@ -39,7 +39,7 @@ async def insertar(mat: Material, conn = Depends(get_conexion)):
 
 @router.put("/{id_material}")
 async def actualizar(id_material: int, mat: Material, conn = Depends(get_conexion)):
-    print("Actualizando materiales")
+    print("Actualizando materiterialas hoyy")
     consulta = "UPDATE materiales SET nombre_componente=%s, costo_unitario=%s, id_proveedor=%s WHERE id_material=%s"
     try:
         async with conn.cursor() as cursor:
@@ -48,6 +48,7 @@ async def actualizar(id_material: int, mat: Material, conn = Depends(get_conexio
             return {"mensaje": "Material Actualizado"}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
 
 @router.delete("/{id_material}")
 async def eliminar(id_material: int, conn = Depends(get_conexion)):

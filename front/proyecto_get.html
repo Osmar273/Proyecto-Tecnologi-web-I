@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Proyectos - SEI</title>
+    <style>
+        /* Paleta de colores de SEI */
+        :root {
+            --azul-oscuro: #0e305a;
+            --azul-claro: #0077b6;
+            --naranja: #f26522;
+            --fondo: #f4f7f9;
+            --texto: #333333;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            padding: 20px;
+        }
+
+        h1 {
+            color: var(--azul-oscuro);
+            border-bottom: 3px solid var(--naranja);
+            padding-bottom: 10px;
+        }
+
+        /* Estructura de lista adaptada a tu ejemplo */
+        #listado {
+            margin-top: 20px;
+        }
+
+        #data {
+            list-style: none; /* Quita los puntos de la lista */
+            padding: 0;
+            display: grid;
+            gap: 20px;
+        }
+
+        /* Diseño de cada item de la lista (tarjeta) */
+        #data li {
+            background-color: white;
+            border-left: 6px solid var(--azul-claro);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #data li h3 {
+            margin-top: 0;
+            color: var(--azul-oscuro);
+        }
+
+        #data li p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .estado-naranja {
+            color: var(--naranja);
+            font-weight: bold;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #eee;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Proyectos Activos</h1>
+    
+    <div id="listado">
+        <ul id="data">
+            <li>Cargando proyectos desde la base de datos...</li>
+        </ul>
+    </div>
+
+    <script src="proyecto_get.js"></script>
+</body>
+</html>
