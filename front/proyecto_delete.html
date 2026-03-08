@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Proyecto - SEI</title>
+    <style>
+        :root {
+            --azul-oscuro: #0e305a;
+            --azul-claro: #0077b6;
+            --naranja: #f26522;
+            --fondo: #f4f7f9;
+            --texto: #333333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        h1 {
+            color: #d9534f;
+            border-bottom: 3px solid var(--azul-oscuro);
+            padding-bottom: 10px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 6px solid #d9534f;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        label {
+            font-weight: bold;
+            color: var(--azul-oscuro);
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Eliminar Proyecto</h1>
+    <form id="formDelete">
+        <label>ID del Proyecto a eliminar:</label>
+        <input type="number" id="id_proyecto_delete" required>
+        <button type="submit">Eliminar Definitivamente</button>
+    </form>
+    <script src="proyecto_delete.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Proyecto - SEI</title>
+    <title>Actualizar Proyecto - SEI</title>
     <style>
         :root {
             --azul-oscuro: #0e305a;
@@ -17,7 +17,6 @@
             background-color: var(--fondo);
             color: var(--texto);
             padding: 20px;
-
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -30,7 +29,7 @@
             border-bottom: 3px solid var(--naranja);
             padding-bottom: 10px;
             width: 100%;
-            max-width: 600px; 
+            max-width: 600px;
             margin-bottom: 20px;
         }
         form {
@@ -42,7 +41,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            width: 100%; /* Para que ocupe todo el ancho hasta max-width */
+            width: 100%;
             box-sizing: border-box;
         }
         label {
@@ -53,7 +52,7 @@
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            width: 100%; /* Para que ocupen todo el ancho del form */
+            width: 100%;
             box-sizing: border-box;
         }
         button {
@@ -72,44 +71,47 @@
     </style>
 </head>
 <body>
-    <h1>Registrar Nuevo Proyecto</h1>
-    <form id="formPost">
+    <h1>Actualizar Proyecto Existente</h1>
+    <form id="formPut">
+        <label>ID del Proyecto a modificar:</label>
+        <input type="number" id="id_proyecto_put" required>
+
         <label>Nombre del Proyecto:</label>
-        <input type="text" id="nombre_proyecto" required>
+        <input type="text" id="nombre_proyecto_put" required>
 
         <label>Descripción:</label>
-        <textarea id="descripcion" required></textarea>
+        <textarea id="descripcion_put" required></textarea>
 
         <label>Fecha de Inicio:</label>
-        <input type="date" id="fecha_inicio" required>
+        <input type="date" id="fecha_inicio_put" required>
 
         <label>Estado:</label>
-        <select id="estado" required>
+        <select id="estado_put" required>
             <option value="En proceso">En proceso</option>
             <option value="Completado">Completado</option>
         </select>
 
         <label>Presupuesto Total (Bs):</label>
-        <input type="number" step="0.01" id="presupuesto_total" required>
+        <input type="number" step="0.01" id="presupuesto_total_put" required>
 
         <label>Fecha de Presupuesto:</label>
-        <input type="date" id="fecha_presupuesto" required>
+        <input type="date" id="fecha_presupuesto_put" required>
 
         <label>Estado del Presupuesto:</label>
-        <select id="estado_presupuesto" required>
+        <select id="estado_presupuesto_put" required>
             <option value="Aprobado">Aprobado</option>
             <option value="Pagado">Pagado</option>
             <option value="Pendiente">Pendiente</option>
         </select>
 
         <label>ID Cliente:</label>
-        <input type="number" id="id_cliente" required>
+        <input type="number" id="id_cliente_put" required>
 
         <label>ID Usuario (Responsable):</label>
-        <input type="number" id="id_usuario" required>
+        <input type="number" id="id_usuario_put" required>
 
-        <button type="submit">Guardar Proyecto</button>
+        <button type="submit">Actualizar Proyecto</button>
     </form>
-    <script src="proyecto_post.js"></script>
+    <script src="proyecto_put.js"></script>
 </body>
 </html>
