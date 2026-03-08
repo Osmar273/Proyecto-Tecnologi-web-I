@@ -1,4 +1,4 @@
-// Asegúrate de que la URL apunte a tu ruta GET de FastAPI
+
 const url = "http://127.0.0.1:8000/proyectos"; 
 const contenedor = document.getElementById('data');
 
@@ -6,7 +6,7 @@ const CargaData = (datos) => {
     let resultado = "";
 
     for (let i = 0; i < datos.length; i++) {
-        // Inyectamos TODOS los campos de tu SQL
+
         resultado += `
         <li>
             <h3>${datos[i].nombre_proyecto}</h3>
@@ -24,11 +24,9 @@ const CargaData = (datos) => {
         `;
     }
 
-    // Reemplaza el texto temporal con la lista real
     contenedor.innerHTML = resultado;
 }
 
-// Consumir la API
 fetch(url)
     .then(response => response.json())
     .then(data => {
