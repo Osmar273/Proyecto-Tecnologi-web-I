@@ -3,7 +3,7 @@ const formPut = document.getElementById('formPut');
 formPut.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.getElementById('id_equipo_put').value;
-    const urlPut = `http://127.0.0.1:8000/equipos/${id}`;
+    const url = `http://www.sei.bo:8000/equipos/${id}`;
 
     const data = {
         nombre_maquina: document.getElementById('nombre_maquina_put').value,

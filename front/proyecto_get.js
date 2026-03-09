@@ -1,5 +1,5 @@
 
-const url = "http://127.0.0.1:8000/proyectos"; 
+const url = "http://www.sei.bo:8000/proyectos/";
 const contenedor = document.getElementById('data');
 
 const CargaData = (datos) => {

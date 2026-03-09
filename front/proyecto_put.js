@@ -1,10 +1,10 @@
-const formPut = document.getElementById('formPut');
+const form = document.getElementById('formPut');
 
 formPut.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const id = document.getElementById('id_proyecto_put').value;
-    const urlPut = `http://127.0.0.1:8000/proyectos/${id}`;
+    const urlPut = `http://www.sei.bo:8000/proyectos/${id}`;
 
     const data = {
         nombre_proyecto: document.getElementById('nombre_proyecto_put').value,

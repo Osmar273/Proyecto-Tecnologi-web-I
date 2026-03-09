@@ -1,4 +1,4 @@
-const urlPost = "http://127.0.0.1:8000/usuarios";
+const url = "http://www.sei.bo:8000/usuarios/";
 const formPost = document.getElementById('formPost');
 
 formPost.addEventListener('submit', (e) => {
@@ -18,7 +18,12 @@ formPost.addEventListener('submit', (e) => {
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al registrar');
+        }
+        return response.json();
+    })
     .then(result => {
         alert("Usuario registrado exitosamente");
         formPost.reset();

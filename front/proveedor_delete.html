@@ -66,6 +66,26 @@
         button:hover {
             background-color: #c9302c;
         }
+        .btn-volver {
+    background-color: white;
+    color: var(--azul-oscuro);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    border: 2px solid var(--naranja);
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.btn-volver:hover {
+    background-color: var(--naranja);
+    color: white;
+}
     </style>
 </head>
 <body>
@@ -76,5 +96,19 @@
         <button type="submit">Eliminar Definitivamente</button>
     </form>
     <script src="proveedor_delete.js"></script>
+    <script src="usuario_put.js"></script>
+    <a id="btnVolver" href="#" class="btn-volver" onclick="volverDashboard(); return false;">
+    <i class="fas fa-arrow-left"></i> Volver</a>
+
+<script>
+    function volverDashboard() {
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        if (usuario && usuario.rol === 'Técnico') {
+            window.location.href = 'panel_tecnico.html';
+        } else {
+            window.location.href = 'index.html';
+        }
+    }
+</script>
 </body>
 </html>

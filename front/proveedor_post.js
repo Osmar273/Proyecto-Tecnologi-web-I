@@ -1,4 +1,4 @@
-const urlPost = "http://127.0.0.1:8000/proveedores";
+const url = "http://www.sei.bo:8000/proveedores/";
 const formPost = document.getElementById('formPost');
 
 formPost.addEventListener('submit', (e) => {

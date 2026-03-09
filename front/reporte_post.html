@@ -6,53 +6,88 @@
     <title>Registrar Reporte - SEI</title>
     <style>
         :root {
-            --azul-oscuro: #0e305a;
-            --azul-claro: #0077b6;
-            --naranja: #f26522;
-            --fondo: #f4f7f9;
+            --azul-oscuro: #0B2B4F;
+            --azul-medio: #1E4A6F;
+            --azul-claro: #2F6B95;
+            --naranja: #F15A24;
+            --amarillo: #FFB800;
+            --gris-fondo: #f4f7f9;
             --texto: #333333;
+            --blanco: #ffffff;
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: var(--fondo);
+            background-color: var(--gris-fondo);
             color: var(--texto);
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            min-height: 100vh;
         }
         h1 {
             color: var(--azul-oscuro);
             border-bottom: 3px solid var(--naranja);
             padding-bottom: 10px;
             display: inline-block;
+            margin-bottom: 30px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         form {
-            background-color: white;
+            background-color: var(--blanco);
             padding: 30px;
             border-radius: 5px;
-            border-top: 6px solid var(--azul-claro);
+            border-left: 4px solid var(--naranja);
             width: 100%;
             max-width: 400px;
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 15px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
         label {
             font-weight: bold;
             color: var(--azul-oscuro);
+            text-align: left;
+            width: 100%;
         }
-        input, textarea {
+        input, textarea, select {
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 4px;
-            width: 90%;
-            text-align: center;
+            width: 100%;
+            font-family: Arial, sans-serif;
         }
-        button {
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--naranja);
+        }
+        input[type="file"] {
+            padding: 8px;
+            background-color: var(--gris-fondo);
+            cursor: pointer;
+        }
+        input[type="file"]::-webkit-file-upload-button {
+            background-color: var(--azul-medio);
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: var(--azul-oscuro);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        button[type="submit"] {
             background-color: var(--naranja);
             color: white;
             border: none;
@@ -61,30 +96,80 @@
             cursor: pointer;
             font-weight: bold;
             margin-top: 10px;
-            width: 90%;
+            width: 100%;
+            font-size: 16px;
         }
-        button:hover {
+        button[type="submit"]:hover {
             background-color: #d1551c;
         }
+        .btn-volver {
+            background-color: white;
+            color: var(--azul-oscuro);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            border: 2px solid var(--naranja);
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .btn-volver:hover {
+            background-color: var(--naranja);
+            color: white;
+        }
+        .file-info {
+            font-size: 12px;
+            color: var(--azul-medio);
+            margin-top: 5px;
+            text-align: left;
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <h1>Registrar Nuevo Reporte</h1>
-    <form id="formPost">
-        <label>Fecha de Visita:</label>
-        <input type="date" id="fecha_visita" required>
+    <div class="container">
+        <h1><i class="fas fa-file-alt" style="margin-right: 10px;"></i>Registrar Nuevo Reporte</h1>
+        
+        <form id="formPost" enctype="multipart/form-data">
+            <label>Fecha de Visita:</label>
+            <input type="date" id="fecha_visita" required>
 
-        <label>Detalle del Trabajo:</label>
-        <textarea id="detalle_trabajo" rows="4"></textarea>
+            <label>Detalle del Trabajo:</label>
+            <textarea id="detalle_trabajo" rows="4" placeholder="Describa el trabajo realizado..."></textarea>
 
-        <label>Archivo Adjunto (URL o Nombre):</label>
-        <input type="text" id="archivo_adjunto">
+            <label>Archivo Adjunto (Imagen):</label>
+            <input type="file" id="archivo_adjunto" accept="image/png, image/jpeg, image/jpg, image/gif">
+            <div class="file-info">Formatos permitidos: PNG, JPG, JPEG, GIF</div>
 
-        <label>ID Proyecto:</label>
-        <input type="number" id="id_proyecto" required>
+            <label>ID Proyecto:</label>
+            <input type="number" id="id_proyecto" required placeholder="Ingrese el ID del proyecto">
 
-        <button type="submit">Guardar Reporte</button>
-    </form>
+            <button type="submit">
+                <i class="fas fa-save"></i> Guardar Reporte
+            </button>
+        </form>
+
+        <a id="btnVolver" href="#" class="btn-volver" onclick="volverDashboard(); return false;">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </div>
+
+    <script>
+        function volverDashboard() {
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+            if (usuario && usuario.rol === 'Técnico') {
+                window.location.href = 'panel_tecnico.html';
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
     <script src="reporte_post.js"></script>
+
 </body>
 </html>

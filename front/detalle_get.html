@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Materiales - SEI</title>
+    <style>
+        :root {
+            --azul-oscuro: #0e305a;
+            --azul-claro: #0077b6;
+            --naranja: #f26522;
+            --fondo: #f4f7f9;
+            --texto: #333333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        h1 {
+            color: var(--azul-oscuro);
+            border-bottom: 3px solid var(--naranja);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        #listado {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        #data {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+        #data li {
+            background-color: white;
+            border-top: 6px solid var(--azul-claro);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h3 {
+            margin-top: 0;
+            color: var(--azul-oscuro);
+        }
+        p {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+      .btn-volver {
+    background-color: white;
+    color: var(--azul-oscuro);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    border: 2px solid var(--naranja);
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.btn-volver:hover {
+    background-color: var(--naranja);
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <h1>Listado de Materiales Usados</h1>
+    <div id="listado">
+        <ul id="data">
+            <li>Cargando...</li>
+        </ul>
+    </div>
+    <script src="detalle_get.js"></script>
+    <script src="usuario_put.js"></script>
+    <a id="btnVolver" href="#" class="btn-volver" onclick="volverDashboard(); return false;">
+    <i class="fas fa-arrow-left"></i> Volver</a>
+
+<script>
+    function volverDashboard() {
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        if (usuario && usuario.rol === 'Técnico') {
+            window.location.href = 'panel_tecnico.html';
+        } else {
+            window.location.href = 'index.html';
+        }
+    }
+</script>
+</body>
+</html>

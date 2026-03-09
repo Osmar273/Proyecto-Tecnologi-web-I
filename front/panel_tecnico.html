@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Técnico - SEI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul-oscuro: #0B2B4F;
+            --azul-medio: #1E4A6F;
+            --naranja: #F15A24;
+            --amarillo: #FFB800;
+            --gris-fondo: #f5f7fa;
+            --texto: #2c3e50;
+            --blanco: #ffffff;
+            --gris-claro: #ecf0f1;
+            --sombra: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--texto);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--azul-oscuro);
+            color: white;
+            padding: 0 30px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text h1 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .logo-text h1 span {
+            color: var(--naranja);
+        }
+        .logo-text p {
+            font-size: 11px;
+            color: var(--amarillo);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .user-details {
+            text-align: right;
+        }
+        .user-details h4 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .user-details span {
+            font-size: 12px;
+            color: var(--amarillo);
+        }
+        .logout-btn {
+            background-color: transparent;
+            color: white;
+            border: 1px solid var(--naranja);
+            padding: 6px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .logout-btn:hover {
+            background-color: var(--naranja);
+        }
+
+        /* Contenido principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .welcome-message {
+            margin-bottom: 30px;
+        }
+        .welcome-message h2 {
+            color: var(--azul-oscuro);
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .welcome-message h2 i {
+            color: var(--naranja);
+        }
+
+        /* Stats cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--sombra);
+            border: 1px solid #eef2f6;
+            border-left: 4px solid var(--naranja);
+        }
+        .stat-card h4 {
+            font-size: 14px;
+            color: var(--azul-medio);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .stat-card .number {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--azul-oscuro);
+        }
+
+        /* DISEÑO POR CATEGORÍAS */
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--naranja);
+            color: var(--azul-oscuro);
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .category-title i {
+            color: var(--naranja);
+            font-size: 20px;
+        }
+
+        .modules-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .module-card {
+            flex: 1 1 200px;
+            min-width: 220px;
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--sombra);
+            border: 1px solid #eef2f6;
+            transition: all 0.2s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(11, 43, 79, 0.15);
+            border-color: var(--naranja);
+        }
+
+        .module-icon {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(241, 90, 36, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .module-icon i {
+            font-size: 22px;
+            color: var(--naranja);
+        }
+
+        .module-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--azul-oscuro);
+            margin-bottom: 5px;
+        }
+
+        .module-card p {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .action-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .action-link {
+            text-decoration: none;
+            font-size: 13px;
+            color: var(--azul-medio);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 0;
+        }
+        .action-link i {
+            font-size: 12px;
+            color: var(--naranja);
+        }
+        .action-link:hover {
+            color: var(--naranja);
+        }
+
+        /* Tabla de proyectos */
+        .projects-section {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--sombra);
+            border: 1px solid #eef2f6;
+            margin-top: 20px;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--azul-oscuro);
+        }
+        .section-title h3 {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title h3 i {
+            color: var(--naranja);
+        }
+        .view-all {
+            color: var(--naranja);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            padding: 15px 12px;
+            background-color: #f8fafc;
+            color: var(--azul-oscuro);
+            font-weight: 600;
+            font-size: 14px;
+            border-bottom: 2px solid var(--naranja);
+        }
+        td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #eef2f6;
+            font-size: 14px;
+        }
+        .status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status.proceso {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .status.completado {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .action-icons {
+            display: flex;
+            gap: 12px;
+        }
+        .action-icons a {
+            color: var(--azul-medio);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .action-icons a:hover {
+            color: var(--naranja);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                height: auto;
+                padding: 15px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
+            }
+            .user-info {
+                width: 100%;
+                justify-content: center;
+            }
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            .modules-row {
+                flex-direction: column;
+            }
+            .module-card {
+                min-width: 100%;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo-area">
+            <img src="/front/logo sei.png" alt="Logo SEI" class="logo-img">
+            <div class="logo-text">
+                <h1>SISTEMA <span>ELÉCTRICO</span> INDUSTRIAL</h1>
+                <p>Área Técnica</p>
+            </div>
+        </div>
+
+        <div class="user-info">
+            <div class="user-details">
+                <h4 id="nombreTecnico">Carlos Técnico</h4>
+                <span id="especialidad">Electricidad Industrial</span>
+            </div>
+            <button id="btnCerrarSesion" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Salir
+            </button>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <!-- Gestión de Operaciones -->
+        <div class="category-section">
+            <div class="category-title">
+                <i class="fas fa-hard-hat"></i>
+                <span>Gestión de Operaciones</span>
+            </div>
+            <div class="modules-row">
+                <!-- Equipos -->
+                <div class="module-card">
+                    <div class="module-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Equipos</h3>
+                    <p>Gestión de maquinaria</p>
+                    <div class="action-links">
+                        <a href="equipo_get.html" class="action-link"><i class="fas fa-eye"></i> Ver</a>
+                        <a href="equipo_post.html" class="action-link"><i class="fas fa-plus"></i> Registrar</a>
+                    </div>
+                </div>
+
+                <!-- Reportes -->
+                <div class="module-card">
+                    <div class="module-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Reportes</h3>
+                    <p>Documentación técnica</p>
+                    <div class="action-links">
+                        <a href="reporte_get.html" class="action-link"><i class="fas fa-eye"></i> Ver</a>
+                        <a href="reporte_post.html" class="action-link"><i class="fas fa-plus"></i> Nuevo</a>
+                    </div>
+                </div>
+
+                <!-- Materiales -->
+                <div class="module-card">
+                    <div class="module-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3>Materiales</h3>
+                    <p>Control de insumos</p>
+                    <div class="action-links">
+                        <a href="detalle_get.html" class="action-link"><i class="fas fa-eye"></i> Historial</a>
+                        <a href="detalle_post.html" class="action-link"><i class="fas fa-plus"></i> Asignar</a>
+                    </div>
+                </div>
+
+                <!-- Proyectos -->
+                <div class="module-card">
+                    <div class="module-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Proyectos</h3>
+                    <p>Vista general</p>
+                    <div class="action-links">
+                        <a href="proyecto_get.html" class="action-link"><i class="fas fa-eye"></i> Ver todos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+    </div>
+
+    <script src="panel_tecnico.js"></script>
+</body>
+</html>

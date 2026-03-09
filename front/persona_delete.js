@@ -3,7 +3,7 @@ const formDelete = document.getElementById('formDelete');
 formDelete.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.getElementById('id_persona_delete').value;
-    const urlDelete = `http://127.0.0.1:8000/persona/${id}`;
+    const url = `http://www.sei.bo:8000/persona/${id}`;
 
     fetch(urlDelete, {
         method: 'DELETE'

@@ -3,7 +3,7 @@ const formPut = document.getElementById('formPut');
 formPut.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.getElementById('id_reporte_put').value;
-    const urlPut = `http://127.0.0.1:8000/reportes_tecnicos/${id}`;
+    const url = `http://www.sei.bo:8000/reportes_tecnicos/${id}`;
 
     const data = {
         fecha_visita: document.getElementById('fecha_visita_put').value,

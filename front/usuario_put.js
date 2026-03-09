@@ -3,7 +3,7 @@ const formPut = document.getElementById('formPut');
 formPut.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.getElementById('id_usuario_put').value;
-    const urlPut = `http://127.0.0.1:8000/usuarios/${id}`;
+    const url = `http://www.sei.bo:8000/usuarios/${id}`;
 
     const data = {
         nombre: document.getElementById('nombre_put').value,

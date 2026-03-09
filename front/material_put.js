@@ -3,7 +3,7 @@ const formPut = document.getElementById('formPut');
 formPut.addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.getElementById('id_material_put').value;
-    const urlPut = `http://127.0.0.1:8000/materiales/${id}`;
+    const url = `http://www.sei.bo:8000/materiales/${id}`;
 
     const data = {
         nombre_componente: document.getElementById('nombre_componente_put').value,

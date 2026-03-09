@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:8000/reportes_tecnicos";
+const url = "http://www.sei.bo:8000/reportes_tecnicos/";
 const contenedor = document.getElementById('data');
 
 const CargaData = (datos) => {
